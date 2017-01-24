@@ -11,7 +11,7 @@ import time
 import numpy as np
 import math
 
-f = open("tianchi_fresh_comp_train_user.csv")
+f = open("tianchi_fresh_comp_train_user4.csv")
 context  = f.readlines()  #把每一行的原始数据放进context中,
 
  #readlines()自动将文件内容分析成一个行的列表，该列表可以由 Python 的 for. in .处理
@@ -92,10 +92,12 @@ id = 0
 for uid in train_day_Nov25:
     for i in range(4):
         X[id][i] = math.log1p(ui_dict[i][uid] if uid in ui_dict[i] else 0)
-    y[id] = 1 if uid in ui_buy else 0
+    times = time.strptime(uid(-1),"%Y-%m-%d %H")
+    if (int(times.tm_mday)) == 24:
+        y[id] = 1 if uid in ui_buy else 0
     id += 1
 
-
+print('X = ', X)
 
 print('--------------------- \n\n')
 print('train number = ', len(y), 'positive number = ', sum(y), '\n') 
@@ -109,7 +111,7 @@ for uid in forecast_Dec_day19:
         pX[id][i] = math.log1p(ui_dict[i][uid] if uid in ui_dict[i] else 0)
     id += 1
 
-#print('pX = ', pX)
+print('pX = ', pX)
 
 
 ##########################训练模型#########################################
@@ -139,7 +141,7 @@ lx = sorted(lx, key = lambda x:x[1], reverse = True)
 
 
 
-wf = open('ans.csv','w')
+wf = open('ans_unhandle.csv','w')
 wf.write('user_id,item_id\n')
 for i in range(len(lx)):
     item = lx[i]
