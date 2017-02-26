@@ -7,7 +7,7 @@ Created on Mon Feb 20 14:56:41 2017
 """
 
 import time
-import matplotlib.pyplot as plt    
+
 
 
 
