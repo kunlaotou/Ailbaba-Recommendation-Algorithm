@@ -8,9 +8,6 @@ Created on Mon Feb 20 14:56:41 2017
 
 import time
 
-
-
-
 f = open("testdata.csv")
 context  = f.readlines() 
 
