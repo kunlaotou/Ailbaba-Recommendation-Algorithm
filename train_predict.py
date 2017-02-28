@@ -12,7 +12,7 @@ import math
 
 
 trainset= []
-f = open("训练集.csv")
+f = open("testdata.csv")
 context  = f.readlines()
 
 ui_buy = {}
@@ -29,9 +29,9 @@ for line in context:
     else:
         if (array[2]  == '4'):             #训练集打标签预处理
             ui_buy[uid] = 1 
-            
+   
 trainset = list(set(trainset))
-print('U-I个数:\t',len(trainset))
+print('U-I:\t',len(trainset))
 ########################训练集特征预处理###############################
 ui_dict = [{} for i in range(4)] 
 for line in context:
@@ -51,7 +51,7 @@ for line in context:
 f.close()  
 
 #######################对测试集/预测集合的预处理################################
-f = open("测试集/预测集.csv")
+f = open("tianchi_fresh_comp_train_user4.csv")
 context  = f.readlines()
 predictset = []
 for line in context:    
@@ -63,8 +63,8 @@ for line in context:
     f_times = time.strftime("%Y-%m-%d %H", times)
     uid = (array[0],array[1]) 
     predictset.append(uid)
-predictset = list(set(predictset))   
-
+predictset = list(set(predictset))
+  
 pre_ui_dict = [{} for i in range(4)] 
 for line in context:
     line = line.replace('\n','')
