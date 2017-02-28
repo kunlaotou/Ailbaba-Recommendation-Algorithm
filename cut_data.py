@@ -24,8 +24,7 @@ for line in context:
     if (int(times.tm_mday) >= 7) & (int(times.tm_mday) <= 17) & (int(times.tm_mon) == 12):
         all_data.append(array)
 f.close()
-print(len(all_data))
-all_data = set(all_data)  #去重复
+
 print(len(all_data))
 
 wf = open('testdata1.csv','w') #写入的文件
